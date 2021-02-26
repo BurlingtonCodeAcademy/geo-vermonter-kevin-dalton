@@ -6,6 +6,7 @@ import GuessButton from './components/Buttons/GuessButton'
 import QuitButton from './components/Buttons/QuitButton'*/
 
 import Map from './components/Map'
+import gameMap from './components/gameMap'
 
 function App() {
 
