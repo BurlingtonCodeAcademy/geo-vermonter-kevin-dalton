@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Polygon, Marker, Polyline } from "react-leaflet";
+import { MapContainer, TileLayer, Polygon, Marker, ChangeView, Polyline } from "react-leaflet";
 import borderData from "../data/border";
 
 function Map(props) {
@@ -7,13 +7,14 @@ function Map(props) {
   return (
     <MapContainer
       center={props.center}
-      zoom={8}
+      zoom={props.zoom}
       scrollWheelZoom={false}
       doubleClickZoom={false}
       zoomControl={false}
       touchZoom={false}
       style={{ height: "600px", width: "600px" }}
     >
+      {/* <ChangeView center = { center } zoom = { zoom } /> */}
       <TileLayer
         url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
