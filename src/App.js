@@ -18,9 +18,7 @@ function App() {
     </div>
 
     <div id = "gameButtons">
-    <PlayButton/>
-    <GuessButton/>
-    <QuitButton/>
+      <MainButtons/>
     </div>
     </>
 );
@@ -30,7 +28,7 @@ function App() {
 
 
     function startGame() {
-      PlayButton
+      
     }
 
 
