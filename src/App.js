@@ -1,25 +1,32 @@
 import './styles/App.css';
 import { useState } from 'react'
-import MainButtons from './components/Buttons/MainButtons'
-/*import PlayButton from './components/Buttons/PlayButton'
-import GuessButton from './components/Buttons/GuessButton'
-import QuitButton from './components/Buttons/QuitButton'*/
-import ChangeView from "./components/Buttons/ChangeView"
-
 import Map from './components/Map'
+
 
 
 function App() {
 
+  // const mapRef = useState()
+
   const [center, setCenter] = useState([43.88, -72.7317])
-  // const [center, setCenter] = useState([43.5, -72.555])
+ 
 
   const[zoom, setZoom] = useState(8)
 
-  function MainButtons(){
 
-    // const[disable, setDisabled] = useState(false)
-    // const[enable, setEnabled] = useState(true)
+  function randomInt(min, max) {//function to generate a random number
+    let range = max - min + 1;
+    let randNum = Math.floor(Math.random() * range) + min;
+    return randNum;
+  }
+
+
+  function randomLonGen(){
+
+  }
+
+
+  function MainButtons(){
   
   
     function toggleDisable() {
@@ -28,6 +35,12 @@ function App() {
       document.getElementById('quit').disabled = false;
     }
   
+    // function handleOnSetView() {
+    //   const { current = {} } = mapRef;
+    //   const { leafletElement: map } = current;
+  
+    //   map.setView(center, 14);
+    // }
     
   
     function startGame(){
@@ -55,7 +68,7 @@ function App() {
   return (
     <>
     <div>
-      <Map center={center} zoom = {zoom} />
+      <Map center={center} zoom = {zoom}/>
     </div>
 
     <div id = "gameButtons">
