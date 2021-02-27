@@ -1,6 +1,8 @@
 import { MapContainer, TileLayer, Polygon, Marker, Polyline } from "react-leaflet";
 import borderData from "../data/border";
 import ChangeView from './ChangeView'
+import L from 'leaflet'
+import leafletPip from 'leaflet-pip'
 
 
 
@@ -14,7 +16,7 @@ function Map(props) {
     <MapContainer
       center={props.center}
       zoom={props.zoom}
-      scrollWheelZoom={false}
+      scrollWheelZoom= {true}
       doubleClickZoom={false}
       zoomControl={false}
       touchZoom={false}
