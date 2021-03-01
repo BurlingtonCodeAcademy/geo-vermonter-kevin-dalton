@@ -1,13 +1,21 @@
 /*------------------------------------Body and background styles----------------------------------------*/
 
 html{
-  background-image: url(https://images.wallpapersden.com/image/download/forest-minimal_amxraG2UmZqaraWkpJRnamtlrWZpaWU.jpg);
+  background-image: url('../images/geoBackground.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.zoom {
+  zoom: 50%
+}
+
+
+
 body{
   margin:0;
+  height: 100vh;
+  
 }
 
 
