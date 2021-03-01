@@ -16,11 +16,11 @@ function Map(props) {
     <MapContainer
       center={props.center}
       zoom={props.zoom}
-      scrollWheelZoom= {true}
+      scrollWheelZoom= {false}
       doubleClickZoom={false}
       zoomControl={false}
       touchZoom={false}
-      style={{ height: "600px", width: "600px" }}
+      style={{ height: "600px", width: "600px", zIndex: 0, marginLeft: '15vw', marginRight: '0' }}
     >
       <ChangeView center = {props.center} zoom = {props.zoom} /> 
       <TileLayer

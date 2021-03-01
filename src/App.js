@@ -3,16 +3,16 @@ import { useState } from "react";
 import Map from "./components/Map";
 import leafletPip from "leaflet-pip";
 import { L, GeoJson } from "leaflet";
+import Modal from "./components/Modal";
 
-//------------------------------Lat Lon variables-----------------///
+//----------------Initializing Lat/Long variables and score variable-----------------///
 let randLat = randLatGen(45.007561302382754, 42.730315121762715);
 let randLon = randLonGen(-73.26, -71.28);
 let playerScore = 100;
-let newCenter = [randLat, randLon]
+let startCenter = [randLat, randLon];
 
-//---------------------------leaflet pip...idk-----------------------------//
-// let point = leafletPip.pointInLayer([randLon, randLat], );
 
+//---------Functions to generate lat and long of random point-----//
 function randLonGen(min, max) {
   let randLon = Math.random() * (max - min) + min;
   return randLon;
@@ -36,24 +36,74 @@ function App() {
   const [center, setCenter] = useState([43.88, -72.7317]);
   const [zoom, setZoom] = useState(8);
 
-  // console.log(persistentLat, persistentLon)
-
+  
+//-----Function to start game, enable/disable buttons, and zoom in to random point---//
   function startGame() {
-    toggleDisable();
+   // toggleDisable(); Working on this function
     setZoom(18);
-    // setCenter([randLat, randLon]);
-    setCenter(newCenter)
-    console.log(newCenter)
+    setCenter(startCenter);
   }
-
+//-------------Function to disable/enables when game starts. Working on disabling directional buttons---//
   function toggleDisable() {
     document.getElementById("start-button").disabled = true;
     document.getElementById("guess").disabled = false;
     document.getElementById("quit").disabled = false;
+    // document.getElementById('East').disabled= false;
+    // document.getElementById('West').disabled= false;
+    // document.getElementById('North').disabled = false;
+    // document.getElementById('South').disabled = false;
+    // document.getElementById('Return').disabled = false;
   }
-
+//-------------Function to set up Start, Quit, Guess, and Navigation buttons, with Divs to allow targeted CSS---------//
   function MainButtons() {
-    //-------------------------move functions----------------//
+    return (
+      <div id="allButtons">
+        <h3 class= "needsBG">Movement Buttons</h3>
+        <div id="nav-buttons">
+        
+          <div id="top">
+            <button id="North" class="nav-buttons" onClick={moveNorth}>
+              North
+            </button>
+          </div>
+    {/* Div for East, West, And Center */}
+          <div id="mid3">
+            <button id="West" class="nav-buttons" onClick={moveWest}>
+              West
+            </button>
+            <button id="Return" class="nav-buttons" onClick={returnCenter}>
+              Start Point
+            </button>
+            <button id="East" class="nav-buttons" onClick={moveEast}>
+              East
+            </button>
+          </div>
+
+          <div id="bottom">
+            <button id="South" class="nav-buttons" onClick={moveSouth}>
+              South
+            </button>
+          </div>
+        </div>
+
+        <div id = "score" class= "needsBG">
+        <h4>{`Player Score: ${playerScore}`}</h4>
+        </div>
+{/* Div for Play and Quit Buttons and Dropdown Modal for Guessing county */ }
+        <div id="playButtons">
+          <h3 class= "needsBG">GamePlay Options</h3>
+          <button id="start-button" onClick={startGame}>
+            Start a Game
+          </button>
+          <Modal />
+          <button disabled={false} id="quit">
+            I Give Up!
+          </button>
+        </div>
+      </div>
+    );
+
+    //-------------------------functions to move center and deduct point from score----------------//
 
     function moveEast() {
       randLon = randLon + 0.002;
@@ -78,50 +128,27 @@ function App() {
       setCenter([randLat, randLon]);
       playerDeductPoint(1);
     }
-
+//-------Function to return to original random point------//
     function returnCenter() {
-      setCenter(newCenter)
+      setCenter(startCenter);
     }
-
-    function guess() {}
-
-    function quit() {}
-
-    return (
-      <>
-        <div>
-          <button id="start-button" onClick={startGame}>
-            Start a Game
-          </button>
-          <button disabled={true} id="guess" onClick={guess}>
-            Guess the Sport
-          </button>
-          <button disabled={true} id="quit" onClick={quit}>
-            I Give Up!
-          </button>
-        </div>
-
-        <div id="nav-buttons">
-          <button onClick={moveEast}>East</button>
-          <button onClick={moveWest}>West</button>
-          <button onClick={moveNorth}>North</button>
-          <button onClick={moveSouth}>South</button>
-          <button onClick={returnCenter}>Return to First Point</button>
-        </div>
-      </>
-    );
   }
 
-  return (
-    <>
-      <div>
-        <Map center={center} zoom={zoom} />
-      </div>
+ 
 
+  
+//-------------Returns Map and Buttons to page----------//
+  return (
+    <body>
+      <h2>If You Were Dropped in Rural Vermont, Could You Find Out What County You're in?</h2> 
       <div id="gameButtons">
         <MainButtons />
       </div>
-    </>
+
+      <div id="mapDiv">
+        <Map center={center} zoom={zoom} />
+      </div>
+    </body>
   );
 }
 

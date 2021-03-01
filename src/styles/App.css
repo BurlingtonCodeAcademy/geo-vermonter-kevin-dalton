@@ -1,3 +1,17 @@
+/*------------------------------------Body and background styles----------------------------------------*/
+
+html{
+  background-image: url(https://images.wallpapersden.com/image/download/forest-minimal_amxraG2UmZqaraWkpJRnamtlrWZpaWU.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body{
+  margin:0;
+}
+
+
+/*---------------------- default Styles---------------------------------------- */
 .App {
   text-align: center;
 }
@@ -35,4 +49,71 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/*--------------------Button styles---------------------*/
+#nav-buttons {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#top{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bottom{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mapDiv{
+  margin-right: 0;
+  width: 600px;
+}
+
+#playButtons{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  height: 200px;
+}
+
+#allButtons{
+  display: flex;
+  float: right;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20vw;
+  margin-top: 100px;
+}
+
+button:hover {
+  background-color: darkgray;
+}
+
+h2{
+  text-align: center;
+}
+
+#start-button{
+  border: 5px solid forestgreen;
+  height: 50px;
+}
+
+/*-------------------title and score backgrounds for visability---------------------------*/
+.needsBG{
+  background-color: rgba(128, 128, 128, 0.685);
+  border-radius: 8%;
+}
+
+#score{
+  margin-top: 50px;
 }
