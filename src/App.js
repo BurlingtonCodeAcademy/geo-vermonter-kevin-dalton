@@ -95,7 +95,7 @@ function App() {
           <button id="start-button" onClick={startGame}>
             Start a Game
           </button>
-          <Modal />
+          <Modal id="modal"/>
           <button disabled={false} id="quit">
             I Give Up!
           </button>
